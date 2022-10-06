@@ -1,7 +1,6 @@
 # BigDataGitHubCommits
 7. Semester group project. 
 
-
 ## How to connect to HDFS and Hive
 ### HDFS
 Connect to the hdfs container with: "docker exec -ti x bash"
