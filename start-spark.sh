@@ -9,12 +9,12 @@ export SPARK_MASTER_HOST='hostname'
 
 cd /opt/spark/bin && ./spark-class org.apache.spark.deploy.master.Master --ip $SPARK_MASTER_HOST --port $SPARK_MASTER_PORT --webui-port $SPARK_MASTER_WEBUI_PORT >> $SPARK_MASTER_LOG
 
-else if [ "$SPARK_WORKLOAD" == "worker" ];
+elif [ "$SPARK_WORKLOAD" == "worker" ];
 then
 # When the spark work_load is worker run class org.apache.spark.deploy.master.Worker
 cd /opt/spark/bin && ./spark-class org.apache.spark.deploy.worker.Worker --webui-port $SPARK_WORKER_WEBUI_PORT $SPARK_MASTER >> $SPARK_WORKER_LOG
 
-else if [ "$SPARK_WORKLOAD" == "submit" ];
+elif [ "$SPARK_WORKLOAD" == "submit" ];
 then
     echo "SPARK SUBMIT"
 else
