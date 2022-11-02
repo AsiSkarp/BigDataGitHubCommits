@@ -9,6 +9,8 @@ services:
       - SPARK_SSL_ENABLED=no
       - HADOOP_CONF_DIR=/etc/hadoop/conf
     network_mode: host
+    volumes:
+      - ./hadoop-site:/etc/hadoop/conf:ro
   spark-master:
     extends:
       service: spark-template
