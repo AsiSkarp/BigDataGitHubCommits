@@ -2,6 +2,6 @@ version: '3'
 services:
   spark-worker:
     extends:
-      file: ../../common/spark-worker.yml
+      file: ../../common/spark.yml
       service: spark-worker
 
