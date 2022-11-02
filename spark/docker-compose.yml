@@ -1,55 +1,27 @@
-version: "3.3"
+version: '2'
+
 services:
-  spark-master:
-    image: ghcr.io/nicklason/cluster-apache-spark:latest
-    ports:
-      - "9090:8080"
-      - "7077:7077"
-    volumes:
-       - ./apps:/opt/spark-apps
-       - ./data:/opt/spark-data
+  spark:
+    image: docker.io/bitnami/spark:3.3
     environment:
-      - SPARK_LOCAL_IP=spark-master
-      - SPARK_WORKLOAD=master
-  spark-worker-a:
-    image: ghcr.io/nicklason/cluster-apache-spark:latest
+      - SPARK_MODE=master
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
     ports:
-      - "9091:8080"
-      - "7000:7000"
-    depends_on:
-      - spark-master
+      - '8080:8080'
+  spark-worker:
+    image: docker.io/bitnami/spark:3.3
     environment:
-      - SPARK_MASTER=spark://spark-master:7077
-      - SPARK_WORKER_CORES=1
+      - SPARK_MODE=worker
+      - SPARK_MASTER_URL=spark://spark:7077
       - SPARK_WORKER_MEMORY=1G
-      - SPARK_DRIVER_MEMORY=1G
-      - SPARK_EXECUTOR_MEMORY=1G
-      - SPARK_WORKLOAD=worker
-      - SPARK_LOCAL_IP=spark-worker-a
-    volumes:
-       - ./apps:/opt/spark-apps
-       - ./data:/opt/spark-data
-  spark-worker-b:
-    image: ghcr.io/nicklason/cluster-apache-spark:latest
-    ports:
-      - "9092:8080"
-      - "7001:7000"
-    depends_on:
-      - spark-master
-    environment:
-      - SPARK_MASTER=spark://spark-master:7077
       - SPARK_WORKER_CORES=1
-      - SPARK_WORKER_MEMORY=1G
-      - SPARK_DRIVER_MEMORY=1G
-      - SPARK_EXECUTOR_MEMORY=1G
-      - SPARK_WORKLOAD=worker
-      - SPARK_LOCAL_IP=spark-worker-b
-    volumes:
-        - ./apps:/opt/spark-apps
-        - ./data:/opt/spark-data
-  demo-database:
-    image: postgres:11.7-alpine
-    ports: 
-      - "5432:5432"
-    environment: 
-      - POSTGRES_PASSWORD=casa1234
+      - SPARK_RPC_AUTHENTICATION_ENABLED=no
+      - SPARK_RPC_ENCRYPTION_ENABLED=no
+      - SPARK_LOCAL_STORAGE_ENCRYPTION_ENABLED=no
+      - SPARK_SSL_ENABLED=no
+      - SPARK_WORKER_WEBUI_PORT=8080
+      - SPARK_WORKER_PORT=7000
+      - SPARK_PUBLIC_DNS=spark-worker-1

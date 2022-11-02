@@ -1,5 +1,0 @@
-Spark:
-https://spark.apache.org/docs/3.3.1/
-
-Dockerfile with Spark:
-https://dev.to/mvillarrealb/creating-a-spark-standalone-cluster-with-docker-and-docker-compose-2021-update-6l4
