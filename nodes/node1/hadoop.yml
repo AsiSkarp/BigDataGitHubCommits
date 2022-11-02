@@ -2,16 +2,10 @@ version: '3'
 name: hadoop
 services:
   namenode:
-    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
-    container_name: hadoop-namenode
+    extends:
+      file: ../common/hadoop.yml
+      service: namenode
     volumes:
       - namenode:/hadoop/dfs/name
-    environment:
-      - CLUSTER_NAME=bigdata
-    env_file:
-      - ../common/hadoop.env
-    ports:
-      - "50070:50070"
-      - "8020:8020"
 volumes:
   namenode:

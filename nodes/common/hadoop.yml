@@ -1,0 +1,26 @@
+version: '3'
+name: hadoop
+services:
+  template:
+    env_file:
+      - ./hadoop.env
+  namenode:
+    extends:
+      service: template
+    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
+    container_name: hadoop-namenode
+    environment:
+      - CLUSTER_NAME=bigdata
+    ports:
+      - "50070:50070"
+      - "8020:8020"
+  datanode:
+    extends:
+      service: template
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: hadoop-datanode
+    environment:
+      SERVICE_PRECONDITION: "bddst-g04-Node1.uvm.sdu.dk:50070"
+    ports:
+      - "50075:50075"
+      - "50010:50010"

@@ -3,7 +3,7 @@ name: hadoop
 services:
   datanode:
     extends:
-      file: ../common/hadoop-datanode.yml
+      file: ../common/hadoop.yml
       service: datanode
     volumes:
       - datanode:/hadoop/dfs/data
