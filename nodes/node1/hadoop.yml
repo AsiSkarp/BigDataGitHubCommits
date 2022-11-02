@@ -1,4 +1,5 @@
 version: '3'
+name: hadoop
 services:
   namenode:
     image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
@@ -8,7 +9,7 @@ services:
     environment:
       - CLUSTER_NAME=bigdata
     env_file:
-      - ../../common/hadoop.env
+      - ../common/hadoop.env
     ports:
       - "50070:50070"
       - "8020:8020"

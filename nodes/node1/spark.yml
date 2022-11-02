@@ -1,6 +1,7 @@
 version: '3'
+name: spark
 services:
   spark:
     extends:
-      file: ../../common/spark.yml
+      file: ../common/spark.yml
       service: spark-master

@@ -1,8 +1,9 @@
 version: '3'
+name: hadoop
 services:
   datanode:
     extends:
-      file: ../../common/hadoop-datanode.yml
+      file: ../common/hadoop-datanode.yml
       service: datanode
     volumes:
       - datanode:/hadoop/dfs/data
