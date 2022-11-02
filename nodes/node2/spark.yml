@@ -4,5 +4,5 @@ services:
   spark-worker:
     extends:
       file: ../common/spark.yml
-      service: spark-worker
+      service: worker
 

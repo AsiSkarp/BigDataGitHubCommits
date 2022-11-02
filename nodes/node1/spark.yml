@@ -4,4 +4,4 @@ services:
   spark:
     extends:
       file: ../common/spark.yml
-      service: spark-master
+      service: master

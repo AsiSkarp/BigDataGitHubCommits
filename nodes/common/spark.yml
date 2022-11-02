@@ -1,6 +1,6 @@
 version: '3'
 services:
-  spark-template:
+  template:
     image: docker.io/bitnami/spark:3.3
     environment:
       - SPARK_RPC_AUTHENTICATION_ENABLED=no
@@ -11,15 +11,15 @@ services:
     network_mode: host
     volumes:
       - ./hadoop-site:/etc/hadoop/conf:ro
-  spark-master:
+  master:
     extends:
-      service: spark-template
+      service: template
     container_name: spark-master
     environment:
       - SPARK_MODE=master
-  spark-worker:
+  worker:
     extends:
-      service: spark-template
+      service: template
     container_name: spark-worker
     environment:
       - SPARK_MODE=worker
