@@ -6,3 +6,5 @@ services:
       service: datanode
     volumes:
       - datanode:/hadoop/dfs/data
+volumes:
+  datanode:
