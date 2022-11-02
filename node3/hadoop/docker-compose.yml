@@ -1,0 +1,16 @@
+version: '3'
+services:
+  datanode:
+    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
+    container_name: datanode
+    volumes:
+      - datanode:/hadoop/dfs/data
+    env_file:
+      - ./hadoop.env
+    environment:
+      SERVICE_PRECONDITION: "bddst-g04-Node1.uvm.sdu.dk:50070"
+    ports:
+      - "50075:50075"
+      - "50010:50010"
+volumes:
+  datanode:
