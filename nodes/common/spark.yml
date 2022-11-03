@@ -15,12 +15,14 @@ services:
       service: template
     image: bde2020/spark-master:3.3.0-hadoop3.3
     container_name: spark-master
+    environment:
+      - SPARK_MASTER_HOST=bddst-g04-Node1.uvm.sdu.dk
   worker:
     extends:
       service: template
     image: bde2020/spark-worker:3.3.0-hadoop3.3
     container_name: spark-worker
     environment:
-      - SPARK_MASTER_URL=spark://bddst-g04-Node1.uvm.sdu.dk:7077
+      - SPARK_MASTER=spark://bddst-g04-Node1.uvm.sdu.dk:7077
       - SPARK_WORKER_MEMORY=1G
       - SPARK_WORKER_CORES=1
