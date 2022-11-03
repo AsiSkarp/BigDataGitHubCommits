@@ -4,6 +4,7 @@ services:
   template:
     env_file:
       - ./hadoop.env
+    network_mode: host
   namenode:
     extends:
       service: template
@@ -11,9 +12,6 @@ services:
     container_name: hadoop-namenode
     environment:
       - CLUSTER_NAME=bigdata
-    ports:
-      - "50070:50070"
-      - "8020:8020"
   datanode:
     extends:
       service: template
@@ -21,6 +19,3 @@ services:
     container_name: hadoop-datanode
     environment:
       SERVICE_PRECONDITION: "bddst-g04-Node1.uvm.sdu.dk:50070"
-    ports:
-      - "50075:50075"
-      - "50010:50010"
