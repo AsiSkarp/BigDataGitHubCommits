@@ -1,33 +1,5 @@
 version: '3'
 services:
-
-  namenode: # This is the master node
-    image: bde2020/hadoop-namenode:2.0.0-hadoop2.7.4-java8
-    container_name: namenode
-    volumes:
-      - ./hdfs/namenode:/hadoop/dfs/name
-    environment:
-      - CLUSTER_NAME=hive
-    env_file:
-      - ./hadoop.env
-    ports:
-      - "50070:50070"
-
-
-  datanode: # setup for datanodes, copy this service and change name to add more
-    image: bde2020/hadoop-datanode:2.0.0-hadoop2.7.4-java8
-    container_name: datanode
-    volumes:
-      - ./hdfs/datanode:/hadoop/dfs/data
-    env_file:
-      - ./hadoop.env
-    environment:
-      SERVICE_PRECONDITION: "namenode:50070"
-    depends_on:
-      - namenode
-    ports:
-      - "50075:50075"
-
   hive-server:
     image: bde2020/hive:2.3.2-postgresql-metastore
     container_name: hive-server
@@ -48,7 +20,7 @@ services:
       - ./hadoop-hive.env
     command: /opt/hive/bin/hive --service metastore
     environment:
-      SERVICE_PRECONDITION: "namenode:50070 datanode:50075 hive-metastore-postgresql:5432"
+      SERVICE_PRECONDITION: "hive-metastore-postgresql:5432"
     depends_on:
       - hive-metastore-postgresql
     ports:
@@ -59,7 +31,5 @@ services:
     container_name: hive-metastore-postgresql
     volumes:
       - ./metastore-postgresql/postgresql/data:/var/lib/postgresql/data
-    depends_on:
-      - datanode
     ports:
       - "5432:5432"
