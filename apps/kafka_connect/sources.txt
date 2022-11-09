@@ -1,0 +1,2 @@
+Create image for kafka-connect:
+	- https://developer.confluent.io/learn-kafka/kafka-connect/docker-containers/
