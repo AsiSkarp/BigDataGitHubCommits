@@ -1,0 +1,31 @@
+version: "3.9"
+
+services:
+    kafka1:
+        image: confluentinc/cp-kafka:latest
+        volumes:
+            - kafkavol:/kafka-data 
+        ports: 
+            - "9092:9092"
+        environment:
+            KAFKA_ZOOKEEPER_CONNECT: bddst-g04-Node1.uvm.sdu.dk:2181
+            KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: "INTERNAL:PLAINTEXT,EXTERNAL:PLAINTEXT,DOCKER_LISTENER:PLAINTEXT"
+            KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
+            KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9092
+            KAFKA_INTER_BROKER_LISTENER_NAME: INTERNAL
+            KAFKA_BROKER_ID: 1
+            KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+            KAFKA_PARTITION_ASSIGNMENT_STRATEGY: org.apache.kafka.clients.consumer.RoundRobinAssignor
+        restart: unless-stopped
+
+    kowl:
+        image: quay.io/cloudhut/kowl:master
+        ports: 
+            - 8080:8080
+        restart: unless-stopped
+        environment:
+            KAFKA_BROKERS: kafka1:9092,kafka2:9093
+
+volumes:
+    kafkavol:
+
