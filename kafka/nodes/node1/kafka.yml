@@ -8,13 +8,21 @@ services:
         ports: 
         - "9092:9092"
         environment:
-        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://bddst-g04-Node2.uvm.sdu.dk:9092
+        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://bddst-g04-Node1.uvm.sdu.dk:9092
         - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
         - KAFKA_ZOOKEEPER_CONNECT=bddst-g04-Node1.uvm.sdu.dk:2181
-        - KAFKA_BROKER_ID=2
+        - KAFKA_BROKER_ID=1
         - BOOTSTRAP_SERVERS=bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
         - ZOOKEEPER=bddst-g04-Node1.uvm.sdu.dk:2181
         restart: unless-stopped
+
+    kowl:
+        image: quay.io/cloudhut/kowl:master
+        ports: 
+            - "8080:8080"
+        restart: unless-stopped
+        environment:
+            KAFKA_BROKERS: bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
         
 volumes:
     kafkavol:

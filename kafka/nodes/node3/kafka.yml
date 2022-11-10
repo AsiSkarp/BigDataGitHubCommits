@@ -1,7 +1,7 @@
 version: "3.9"
 
 services:
-    kafka2:
+    kafka:
         image: confluentinc/cp-kafka:latest
         volumes:
             - kafkavol:/kafka-data 
@@ -11,8 +11,8 @@ services:
         - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://bddst-g04-Node3.uvm.sdu.dk:9092
         - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
         - KAFKA_ZOOKEEPER_CONNECT=bddst-g04-Node1.uvm.sdu.dk:2181
-        - KAFKA_BROKER_ID=2
-        - BOOTSTRAP_SERVERS=bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3:9092
+        - KAFKA_BROKER_ID=3
+        - BOOTSTRAP_SERVERS=bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3:9092
         - ZOOKEEPER=bddst-g04-Node1.uvm.sdu.dk:2181
         restart: unless-stopped
 
