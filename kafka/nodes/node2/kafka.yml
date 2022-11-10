@@ -8,12 +8,12 @@ services:
         ports: 
         - "9091:9091"
         environment:
-        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://kafka1:9091
-        - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9091
-        - KAFKA_ZOOKEEPER_CONNECT=zookeeper:2181
+        - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://bddst-g04-Node2:9091
+        - KAFKA_LISTENERS=PLAINTEXT://bddst-g04-Node2:9091
+        - KAFKA_ZOOKEEPER_CONNECT=bddst-g04-Node1.uvm.sdu.dk:2181
         - KAFKA_BROKER_ID=1
-        - BOOTSTRAP_SERVERS=kafka1:9091,kafka2:9092
-        - ZOOKEEPER=zookeeper:2181
+        - BOOTSTRAP_SERVERS=bddst-g04-Node2:9091,bddst-g04-Node3:9092
+        - ZOOKEEPER=bddst-g04-Node1.uvm.sdu.dk:2181
         restart: unless-stopped
 
     kowl:
@@ -22,7 +22,7 @@ services:
             - "8080:8080"
         restart: unless-stopped
         environment:
-            KAFKA_BROKERS: kafka1:9091,kafka2:9092
+            KAFKA_BROKERS: bddst-g04-Node2:9091,bddst-g04-Node3:9092
 
 volumes:
     kafkavol:
