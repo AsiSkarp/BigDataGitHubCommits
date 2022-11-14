@@ -64,7 +64,7 @@ with gzip.open("data.json.gz", "rb") as f_in:
     with open("data.json", "wb") as f_out:
         shutil.copyfileobj(f_in, f_out)
 
-
+input("Press Enter to continue...")
 """
 # delete the zip file
 os.remove("data.json.gz")
