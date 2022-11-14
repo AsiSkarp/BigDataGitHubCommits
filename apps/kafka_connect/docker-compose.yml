@@ -5,6 +5,9 @@ services:
     environment:
       CONNECT_BOOTSTRAP_SERVERS: BOOTSTRAP_SERVERS=bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
       CONNECT_GROUD_ID: 'kc101-connect'
+      CONNECT_CONFIG_STORAGE_TOPIC: 'kc101-connect-configs'
+      CONNECT_OFFSET_STORAGE_TOPIC: 'kC101-connect-offsets'
+      CONNECT_STATUS_STORAGE_TOPIC: 'kc101-connect_status'
       CONNECT_PLUGIN_PATH:  "/usr/share/java,/usr/share/confluent-hub-components,/usr/share/local-connectors" 
     volumes: 
     - Kafka-connect:/connectstream/
