@@ -1,13 +1,13 @@
-version '3'
+version: '3'
 service:
-	Kafka-connect:
-		image:	confluentinc/cp-kafka-connect:7.1.0-1-ubi8
-	environment:	
-		CONNECT_PLUGIN_PATH: /usr/share/java,/usr/share/confluent-hub-components
-	
-	command:
-		- bash
-    		- -c
-    		- |
-      		confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:2.0.2
-      		/etc/confluent/docker/run
+  Kafka-connect:
+  image: confluentinc/cp-kafka-connect:7.1.0-1-ubi8
+  environment:	
+  CONNECT_PLUGIN_PATH: /usr/share/java,/usr/share/confluent-hub-components
+  
+command: 
+- bash
+- -c
+- |
+  confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:2.0.2
+  /etc/confluent/docker/run
