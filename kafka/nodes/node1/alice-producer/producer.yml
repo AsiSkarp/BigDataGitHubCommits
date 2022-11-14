@@ -6,4 +6,6 @@ services:
     build: 
       context: ./
       dockerfile: Dockerfile
+    volumes:
+     - /home/usska18/test_data:/app/test_data
   

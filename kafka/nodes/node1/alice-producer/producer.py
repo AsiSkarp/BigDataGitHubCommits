@@ -3,7 +3,7 @@ import json
 from kafka import KafkaProducer
 
 # "../../../../../test_data/2015-01-01-15.json.txt"
-uz_path = "../../../"
+uz_path = "/app/test_data/2015-01-01-15.json.txt"
 
 print(os.listdir(uz_path))
 
