@@ -64,6 +64,8 @@ with gzip.open("data.json.gz", "rb") as f_in:
     with open("data.json", "wb") as f_out:
         shutil.copyfileobj(f_in, f_out)
 
+
+"""
 # delete the zip file
 os.remove("data.json.gz")
 
@@ -72,17 +74,4 @@ with open("data.json", encoding="utf-8") as f:
     producer = KafkaProducer(bootstrap_servers="bddst-g04-Node1.uvm.sdu.dk:9092")
     for line in f:
         producer.send("alice-test", line.encode("utf-8"))
-
-"""
-r = requests.get(download_file, stream=True)
-
-with open("./data/downloadedFile.json.gz", "wb") as f:
-    for chunk in r.iter_content(chunk_size=1024):
-        if chunk:
-            f.write(chunk)
-
-# Unzipping file
-with gzip.open("./data/downloadedFile.json.gz", "rb") as f_in:
-    with open("./data/downloadedFile.json", "wb") as f_out:
-        shutil.copyfileobj(f_in, f_out)
 """
