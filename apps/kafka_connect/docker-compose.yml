@@ -1,5 +1,5 @@
 version: '3'
-service:
+services:
   Kafka-connect:
   image: confluentinc/cp-kafka-connect:7.1.0-1-ubi8
   environment:	
