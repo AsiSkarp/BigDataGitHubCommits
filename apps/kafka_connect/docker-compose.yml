@@ -2,6 +2,7 @@ version: '3'
 services:
   Kafka-connect:
     image: confluentinc/cp-kafka-connect:7.1.0-1-ubi8	
+    user: "0:0"
     environment:
       CONNECT_BOOTSTRAP_SERVERS: BOOTSTRAP_SERVERS=bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
       CONNECT_GROUD_ID: connect-cluster
