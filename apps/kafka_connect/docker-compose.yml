@@ -8,12 +8,13 @@ services:
       CONNECT_PLUGIN_PATH:  "/usr/share/java,/usr/share/confluent-hub-components,/usr/share/local-connectors" 
     volumes: 
     - Kafka-connect:/connectstream/
-volumes: 
-  Kafka-connect: 
-
-  command:
+    command:
     - bash
     - -c
     - |
       confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:2.0.2
       /etc/confluent/docker/run
+volumes: 
+  Kafka-connect: 
+
+  
