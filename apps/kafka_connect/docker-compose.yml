@@ -10,3 +10,10 @@ services:
     - Kafka-connect:/connectstream/
 volumes: 
   Kafka-connect: 
+
+  command:
+    - bash
+    - -c
+    - |
+      confluent-hub install --no-prompt neo4j/kafka-connect-neo4j:2.0.2
+      /etc/confluent/docker/run
