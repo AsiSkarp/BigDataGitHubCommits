@@ -41,7 +41,7 @@ else:
         gmt_time = str(gmt.tm_hour)
 
 # download_file = "https://data.gharchive.org/2015-01-01-15.json.gz"
-download_file_Update = (
+download_file = (
     "https://data.gharchive.org/"
     + gmt_year
     + "-"
@@ -52,13 +52,32 @@ download_file_Update = (
     + gmt_time
     + ".json.gz"
 )
-print(download_file_Update)
 
-# Downloading file
-r = requests.get(download_file_Update, stream=True)
+print(download_file)
+
+# download the file and get the path to it
+r = requests.get(download_file, allow_redirects=True)
+open("data.json.gz", "wb").write(r.content)
+
+# unzip the file
+with gzip.open("data.json.gz", "rb") as f_in:
+    with open("data.json", "wb") as f_out:
+        shutil.copyfileobj(f_in, f_out)
+
+# delete the zip file
+os.remove("data.json.gz")
+
+# send the data to kafka
+with open("data.json", encoding="utf-8") as f:
+    producer = KafkaProducer(bootstrap_servers="bddst-g04-Node1.uvm.sdu.dk:9092")
+    for line in f:
+        producer.send("alice-test", line.encode("utf-8"))
+
+"""
+r = requests.get(download_file, stream=True)
+
 with open("./data/downloadedFile.json.gz", "wb") as f:
     for chunk in r.iter_content(chunk_size=1024):
-        # writing one chunk at a time to pdf file
         if chunk:
             f.write(chunk)
 
@@ -66,6 +85,4 @@ with open("./data/downloadedFile.json.gz", "wb") as f:
 with gzip.open("./data/downloadedFile.json.gz", "rb") as f_in:
     with open("./data/downloadedFile.json", "wb") as f_out:
         shutil.copyfileobj(f_in, f_out)
-
-print(os.listdir("./data"))
-print(os.getcwd())
+"""
