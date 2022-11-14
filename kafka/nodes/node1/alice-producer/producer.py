@@ -1,7 +1,8 @@
 import json
 from kafka import KafkaProducer
 
-uz_path = "../../../../../test_data/2015-01-01-15.json.txt"
+# "../../../../../test_data/2015-01-01-15.json.txt"
+uz_path = "../../../../../"
 
 os.listdir(uz_path)
 
