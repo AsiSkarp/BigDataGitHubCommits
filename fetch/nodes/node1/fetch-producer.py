@@ -53,8 +53,6 @@ download_file = (
     + ".json.gz"
 )
 
-print(download_file)
-
 # download the file and get the path to it
 r = requests.get(download_file, allow_redirects=True)
 open("data.json.gz", "wb").write(r.content)
@@ -64,8 +62,6 @@ with gzip.open("data.json.gz", "rb") as f_in:
     with open("data.json", "wb") as f_out:
         shutil.copyfileobj(f_in, f_out)
 
-input("Press Enter to continue...")
-"""
 # delete the zip file
 os.remove("data.json.gz")
 
@@ -74,4 +70,3 @@ with open("data.json", encoding="utf-8") as f:
     producer = KafkaProducer(bootstrap_servers="bddst-g04-Node1.uvm.sdu.dk:9092")
     for line in f:
         producer.send("alice-test", line.encode("utf-8"))
-"""
