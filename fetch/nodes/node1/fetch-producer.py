@@ -14,12 +14,12 @@ gmt = time.gmtime()
 gmt_year = str(gmt.tm_year)
 gmt_time = str(gmt.tm_hour)
 
-if gmt.tm_mon < 10:
+if yesterday.month < 10:
     gmt_month = "0" + str(yesterday.month)
 else:
     gmt_month = str(yesterday.month)
 
-if gmt.tm_mday < 10:
+if yesterday.day < 10:
     gmt_day = "0" + str(yesterday.day)
 else:
     gmt_day = str(yesterday.day)
