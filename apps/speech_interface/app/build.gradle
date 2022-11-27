@@ -29,6 +29,14 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    // remove license check for meta
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+    // add vector graphics as default
+    /*defaultConfig {
+        vectorDrawables.useSupportLibrary = true
+    }*/
     buildToolsVersion '33.0.0'
 }
 
