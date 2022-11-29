@@ -9,7 +9,7 @@ import java.util.*
 
 class MainActivity : AppCompatActivity() {
     companion object {
-        private const val ACCESS_TOKEN = "1234567890abcdef" // change to real API
+        private const val ACCESS_TOKEN = "1234567890abide" // change to real API
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +26,7 @@ class MainActivity : AppCompatActivity() {
             "lang" to "en"                      // English language
         )
         // configuring chat interface
-        val human = ChatUser(
+       /* val human = ChatUser(
             1,
             "You",
             BitmapFactory.decodeResource(resources,
@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
             "Agent",
             BitmapFactory.decodeResource(resources,
                 R.drawable.ic_account_circle)
-        )
+        )*/
 
     }
 }
