@@ -40,7 +40,6 @@ else:
     else:
         gmt_time = str(gmt.tm_hour)
 
-# download_file = "https://data.gharchive.org/2015-01-01-15.json.gz"
 download_file = (
     "https://data.gharchive.org/"
     + gmt_year

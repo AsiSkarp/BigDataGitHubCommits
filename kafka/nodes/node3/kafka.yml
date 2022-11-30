@@ -1,12 +1,12 @@
-version: "3.9"
+version: "3.3"
 
 services:
     kafka:
         image: confluentinc/cp-kafka:latest
         volumes:
-            - kafkavol:/kafka-data 
+        - kafkavol:/kafka-data 
         ports: 
-            - "9092:9092"
+        - "9092:9092"
         environment:
         - KAFKA_ADVERTISED_LISTENERS=PLAINTEXT://bddst-g04-Node3.uvm.sdu.dk:9092
         - KAFKA_LISTENERS=PLAINTEXT://0.0.0.0:9092
