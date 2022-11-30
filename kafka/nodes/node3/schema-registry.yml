@@ -20,4 +20,4 @@ services:
     ports:
     - "8002:8000"
     environment:
-    - SCHEMAREGISTRY_URL=bddst-g04-Node3.uvm.sdu.dk:8082
+    - SCHEMAREGISTRY_URL=http://${DOCKER_HOST_IP}:8082
