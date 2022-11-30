@@ -1,5 +1,6 @@
 import requests
 import time
+import datetime
 import gzip
 import shutil
 import json
@@ -7,38 +8,21 @@ import os
 from kafka import KafkaProducer
 
 
+yesterday = datetime.datetime.utcnow().date() - datetime.timedelta(days=1)
+
 gmt = time.gmtime()
 gmt_year = str(gmt.tm_year)
-if gmt.tm_mday < 1:
-    if gmt.tm_mon < 11:
-        gmt_month = "0" + str(gmt.tm_mon - 1)
-    else:
-        gmt_month = str(gmt.tm_mon - 1)
+gmt_time = str(gmt.tm_hour)
 
-    if gmt.tm_mday < 10:
-        gmt_day = "0" + str(gmt.tm_mday)
-    else:
-        gmt_day = str(gmt.tm_mday)
-
-    if gmt.tm_hour < 10:
-        gmt_time = "0" + str(gmt.tm_hour)
-    else:
-        gmt_time = str(gmt.tm_hour)
+if yesterday.month < 10:
+    gmt_month = "0" + str(yesterday.month)
 else:
-    if gmt.tm_mon < 10:
-        gmt_month = "0" + str(gmt.tm_mon)
-    else:
-        gmt_month = str(gmt.tm_mon)
+    gmt_month = str(yesterday.month)
 
-    if gmt.tm_mday < 10:
-        gmt_day = "0" + str(gmt.tm_mday - 1)
-    else:
-        gmt_day = str(gmt.tm_mday - 1)
-
-    if gmt.tm_hour < 10:
-        gmt_time = "0" + str(gmt.tm_hour)
-    else:
-        gmt_time = str(gmt.tm_hour)
+if yesterday.day < 10:
+    gmt_day = "0" + str(yesterday.day)
+else:
+    gmt_day = str(yesterday.day)
 
 download_file = (
     "https://data.gharchive.org/"
