@@ -1,0 +1,184 @@
+{
+    "name": "GitHubEvent",
+    "type": "record",
+    //"namespace": "com.acme.avro",
+    "fields": [
+        {
+            "name": "id",
+            "type": "string"
+        },
+        {
+            "name": "type",
+            "type": "string"
+        },
+        {
+            "name": "actor",
+            "type": {
+                "name": "actor",
+                "type": "record",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "int"
+                    },
+                    {
+                        "name": "login",
+                        "type": "string"
+                    },
+                    {
+                        "name": "gravatar_id",
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string"
+                    },
+                    {
+                        "name": "avatar_url",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "repo",
+            "type": {
+                "name": "repo",
+                "type": "record",
+                "fields": [
+                    {
+                        "name": "id",
+                        "type": "int"
+                    },
+                    {
+                        "name": "name",
+                        "type": "string"
+                    },
+                    {
+                        "name": "url",
+                        "type": "string"
+                    }
+                ]
+            }
+        },
+        {
+            "name": "payload",
+            "type": {
+                "name": "payload",
+                "type": "record",
+                "fields": [
+                    {
+                        "name": "ref",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "ref_type",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "master_branch",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "pusher_type",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "push_id",
+                        "type": "int",
+                        "default": "null"
+                    },
+                    {
+                        "name": "size",
+                        "type": "int",
+                        "default": "null"
+                    },
+                    {
+                        "name": "distinct_size",
+                        "type": "int",
+                        "default": "null"
+                    },
+                    {
+                        "name": "ref",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "head",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "before",
+                        "type": "string",
+                        "default": "null"
+                    },
+                    {
+                        "name": "commits",
+                        "defualt": "null",
+                        "type": {
+                            "type": "array",
+                            "items": {
+                                "name": "commits_record",
+                                "type": "record",
+                                "fields": [
+                                    {
+                                        "name": "sha",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "author",
+                                        "type": {
+                                            "name": "author",
+                                            "type": "record",
+                                            "fields": [
+                                                {
+                                                    "name": "email",
+                                                    "type": "string"
+                                                },
+                                                {
+                                                    "name": "name",
+                                                    "type": "string"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    {
+                                        "name": "message",
+                                        "type": "string"
+                                    },
+                                    {
+                                        "name": "distinct",
+                                        "type": "boolean"
+                                    },
+                                    {
+                                        "name": "url",
+                                        "type": "string"
+                                    }
+                                ]
+                            }
+                        }
+                    }
+                ]
+            }
+        },
+        {
+            "name": "public",
+            "type": "boolean"
+        },
+        {
+            "name": "created_at",
+            "type": "int",
+            "logicalType": "date"
+        }
+    ]
+}

@@ -52,4 +52,4 @@ os.remove("data.json.gz")
 with open("data.json", encoding="utf-8") as f:
     producer = KafkaProducer(bootstrap_servers="bddst-g04-Node1.uvm.sdu.dk:9092")
     for line in f:
-        producer.send("alice-test", line.encode("utf-8"))
+        producer.send("commits", line.encode("utf-8"))
