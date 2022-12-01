@@ -1,0 +1,10 @@
+version: "2"
+
+services:
+  schema-registry-ui:
+    image: landoop/schema-registry-ui
+    hostname: schema-registry-ui
+    ports:
+    - "8000:8000"
+    environment:
+    - SCHEMAREGISTRY_URL=bddst-g04-Node3.uvm.sdu.dk:8082

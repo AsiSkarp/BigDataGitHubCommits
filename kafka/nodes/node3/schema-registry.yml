@@ -12,12 +12,4 @@ services:
     - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_ORIGIN=*
     - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS=GET,POST,PUT,OPTIONS
 
-  schema-registry-ui:
-    image: landoop/schema-registry-ui
-    hostname: schema-registry-ui
-    depends_on:
-    - schema_registry
-    ports:
-    - "8000:8000"
-    environment:
-    - SCHEMAREGISTRY_URL=http://${DOCKER_HOST_IP}:8082
+  
