@@ -1,0 +1,11 @@
+version: '3'
+name: hadoop
+services:
+  namenode:
+    extends:
+      file: ../common/hadoop.yml
+      service: namenode
+    volumes:
+      - namenode:/hadoop/dfs/name
+volumes:
+  namenode:
