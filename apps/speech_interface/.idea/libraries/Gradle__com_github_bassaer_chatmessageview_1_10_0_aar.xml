@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.bassaer:chatmessageview:1.10.0@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f7efc7929f1d99db565803d7371c9041/transformed/jetified-chatmessageview-1.10.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f7efc7929f1d99db565803d7371c9041/transformed/jetified-chatmessageview-1.10.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f7efc7929f1d99db565803d7371c9041/transformed/jetified-chatmessageview-1.10.0/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bassaer/chatmessageview/1.10.0/531d7277362c75e360e54424d695035a8871ec4f/chatmessageview-1.10.0-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.bassaer/chatmessageview/1.10.0/cd609b8cb49c409a681277455380a2f04ecce666/chatmessageview-1.10.0-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
