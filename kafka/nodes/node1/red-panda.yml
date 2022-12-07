@@ -1,7 +1,7 @@
 version: "3.3"
 
 services:
-    kowl:
+    red-panda:
         image: docker.redpanda.com/vectorized/console:latest
         ports: 
             - "8081:8080"
