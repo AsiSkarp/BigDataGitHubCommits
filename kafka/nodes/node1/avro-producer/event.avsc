@@ -1,7 +1,6 @@
 {
     "name": "GitHubEvent",
     "type": "record",
-    //"namespace": "com.acme.avro",
     "fields": [
         {
             "name": "id",
