@@ -1,5 +1,6 @@
 version: "3.3"
 
+name: kowl
 services:
     kowl:
         image: quay.io/cloudhut/kowl:master
@@ -8,3 +9,5 @@ services:
         restart: unless-stopped
         environment:
             KAFKA_BROKERS: bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
+
+        

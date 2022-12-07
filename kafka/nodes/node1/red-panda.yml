@@ -1,5 +1,6 @@
 version: "3.3"
 
+name: red-panda
 services:
     red-panda:
         image: docker.redpanda.com/vectorized/console:latest

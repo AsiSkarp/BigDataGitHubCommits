@@ -1,5 +1,6 @@
 version: "2"
 
+name: schema-registry-ui
 services:
   schema-registry-ui:
     image: landoop/schema-registry-ui
