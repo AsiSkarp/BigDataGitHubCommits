@@ -6,7 +6,7 @@ import shutil
 import json
 import os
 from kafka import KafkaProducer
-
+import json
 
 yesterday = datetime.datetime.utcnow().date() - datetime.timedelta(days=1)
 
@@ -36,9 +36,13 @@ download_file = (
     + ".json.gz"
 )
 
+print("Downloading data from " + download_file + "...")
+
 # download the file and get the path to it
 r = requests.get(download_file, allow_redirects=True)
 open("data.json.gz", "wb").write(r.content)
+
+print("Downloaded file. Unzipping it...")
 
 # unzip the file
 with gzip.open("data.json.gz", "rb") as f_in:
@@ -48,8 +52,12 @@ with gzip.open("data.json.gz", "rb") as f_in:
 # delete the zip file
 os.remove("data.json.gz")
 
+print("Unzipped file. Sending it to Kafka...")
+
 # send the data to kafka
 with open("data.json", encoding="utf-8") as f:
     producer = KafkaProducer(bootstrap_servers="bddst-g04-Node1.uvm.sdu.dk:9092")
     for line in f:
-        producer.send("commits", line.encode("utf-8"))
+        parsed = json.loads(line)
+        if parsed["type"] == "PushEvent":
+            producer.send("commits", line.encode("utf-8"))
