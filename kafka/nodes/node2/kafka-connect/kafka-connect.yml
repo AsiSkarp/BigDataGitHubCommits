@@ -1,7 +1,7 @@
 version: "2"
 
 name: kafka-connect
-service:
+services:
   kafka-connect-hdfs:
     image: kafka-hdfs-custom:1.0.0
     build: 
