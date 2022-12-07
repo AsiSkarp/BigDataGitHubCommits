@@ -1,0 +1,25 @@
+version: "2"
+
+name: kafka-connect
+service:
+  kafka-connect-hdfs:
+    image: kafka-hdfs-custom:1.0.0
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    ports: 
+    - "8083:8083"
+    environment:
+      CONNECT_BOOTSTRAP_SERVERS: 'bddst-g04-Node1.uvm.sdu.dk:9092'
+      CONNECT_REST_ADVERTISED_HOST_NAME: connect
+      CONNECT_REST_PORT: 8083
+      CONNECT_CONFIG_STORAGE_TOPIC: docker-connect-configs
+      CONNECT_CONFIG_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_OFFSET_STORAGE_TOPIC: docker-connect-offsets
+      CONNECT_OFFSET_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_STATUS_STORAGE_TOPIC: docker-connect-status
+      CONNECT_STATUS_STORAGE_REPLICATION_FACTOR: 1
+      CONNECT_ZOOKEEPER_CONNECT: 'bddst-g04-Node1.uvm.sdu.dk:2181'
+    
+    
+
