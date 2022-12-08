@@ -4,15 +4,17 @@ name: red-panda
 services:
     red-panda:
         image: docker.redpanda.com/vectorized/console:latest
+        volumes:
+        - redpandavol:/redpanda-data
         ports: 
-            - "8081:8080"
+        - "8081:8080"
         restart: unless-stopped
         environment:
-            KAFKA_BROKERS: bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
-            CONNECT_ENABLED: true
-            CONNECT_CLUSTERS_NAME: HDFS 2 Sink
-            CONNECT_CLUSTERS_URL: http://bddst-g04-Node2.uvm.sdu.dk:8083
-            KAFKA_SCHEMA_REGISTRY_ENABLED: true
-            KAFKA_SCHEMA_REGISTRY_URLS: http//bddst-g04-Node3.uvm.sdu.dk:8082
+        - KAFKA_BROKERS=bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
+        - CONNECT_ENABLED=true
+        - CONNECT_CLUSTERS_NAME="HDFS 2 Sink"
+        - CONNECT_CLUSTERS_URL=bddst-g04-Node2.uvm.sdu.dk:8083
+        - KAFKA_SCHEMA_REGISTRY_ENABLED=true
+        - KAFKA_SCHEMA_REGISTRY_URLS=bddst-g04-Node3.uvm.sdu.dk:8082
 
         
