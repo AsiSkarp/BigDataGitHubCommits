@@ -1,0 +1,17 @@
+{
+    "name": "hdfs-sink",
+    "connector.class": "io.confluent.connect.hdfs.HdfsSinkConnector",
+    "tasks.max": "1",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "topics": "result.test.nicklas",
+    "hdfs.url": "bddst-g04-Node1.uvm.sdu.dk:8020",
+    "hadoop.home": "/hadoop",
+    "hadoop.conf.dir": "/hadoop/etc/hadoop",
+    "log.dir": "/hadoop/logs/${topic}",
+    "format.class": "io.confluent.connect.hdfs.json.JsonFormat",
+    "flush.size": "3",
+    "rotate.interval.ms": "120000",
+    "topcis.dir": "/hdfs-data/${topic}",
+    "partitioner.class": "io.confluent.connect.hdfs.partitioner.DefaultPartitioner"
+}

@@ -1,7 +1,0 @@
-version: "2"
-
-name: kafka-connect
-service:
-  kafka-connect-hdfs:
-    image: confluentinc/cp-kafka-connect
-
