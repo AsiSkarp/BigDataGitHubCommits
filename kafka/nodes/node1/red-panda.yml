@@ -11,7 +11,7 @@ services:
             KAFKA_BROKERS: bddst-g04-Node1.uvm.sdu.dk:9092,bddst-g04-Node2.uvm.sdu.dk:9092,bddst-g04-Node3.uvm.sdu.dk:9092
             CONNECT_ENABLED: true
             CONNECT_CLUSTERS_NAME: "HDFS 2 Sink"
-            CONNECT_CLUSTERS_URL: http://bddst-g04-Node1.uvm.sdu.dk:8083
+            CONNECT_CLUSTERS_URL: http://bddst-g04-Node2.uvm.sdu.dk:8083
             KAFKA_SCHEMA_REGISTRY_ENABLED: true
             KAFKA_SCHEMA_REGISTRY_URLS: http://bddst-g04-Node3.uvm.sdu.dk:8082
 
