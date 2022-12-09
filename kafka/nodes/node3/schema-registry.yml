@@ -3,12 +3,12 @@ version: "2"
 name: schema-registry
 services:
   schema_registry:
-    hostname: schema_registry
+    hostname: schema-registry
     image: confluentinc/cp-schema-registry:3.3.0
     ports:
-    - "8082:8081"
+    - "8082:8082"
     environment:
-    - SCHEMA_REGISTRY_HOST_NAME=schema_registry
+    - SCHEMA_REGISTRY_HOST_NAME=schema-registry
     - SCHEMA_REGISTRY_KAFKASTORE_CONNECTION_URL=bddst-g04-Node1.uvm.sdu.dk:2181
     - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_ORIGIN=*
     - SCHEMA_REGISTRY_ACCESS_CONTROL_ALLOW_METHODS=GET,POST,PUT,OPTIONS
