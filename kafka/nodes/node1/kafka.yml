@@ -3,7 +3,7 @@ version: "3.3"
 name: kafka
 services:
     kafka:
-        image: confluentinc/cp-kafka:latest
+        image: confluentinc/cp-kafka:3.3.0
         volumes:
         - kafkavol:/kafka-data 
         ports: 
