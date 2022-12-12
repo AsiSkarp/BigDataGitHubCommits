@@ -16,3 +16,6 @@ services:
     - ZOOKEEPER_INIT_LIMIT=5
     - ZOOKEEPER_SYNC_LIMIT=2
     - ZOOKEEPER_SERVERS=bddst-g04-Node1.uvm.sdu.dk:2888:3888
+
+volumes: 
+  zookeeper_vol:
